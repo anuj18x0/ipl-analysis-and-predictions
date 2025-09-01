@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  ipl-analysis-and-predictions:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./Datasets:/app/Datasets:ro     # Mount datasets as read-only
+      - ./Model:/app/Model:ro           # Mount models as read-only
+      - ./Images:/app/Images:ro         # Mount images as read-only
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - ipl-network
+
+networks:
+  ipl-network:
+    driver: bridge

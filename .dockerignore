@@ -1,0 +1,41 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+iplenv/
+venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Model files (optional - uncomment if you want to exclude large model files)
+# *.pkl
+# *.joblib
+
+# Data files (optional - uncomment if datasets are too large)
+# *.csv
+# Datasets/
+
+# Environment variables
+.env
+.env.local

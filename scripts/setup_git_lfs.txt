@@ -1,0 +1,22 @@
+# Git LFS setup for large files
+# Run these commands to use Git LFS:
+
+# Install Git LFS (one time setup)
+git lfs install
+
+# Track large files
+git lfs track "*.csv"
+git lfs track "*.pkl"
+git lfs track "Datasets/deliveries_2008-2024.csv"
+git lfs track "Model/predict_ipl_score_best_rf.pkl"
+
+# Add .gitattributes
+git add .gitattributes
+
+# Add large files back
+git add Datasets/deliveries_2008-2024.csv
+git add Model/predict_ipl_score_best_rf.pkl
+
+# Commit and push
+git commit -m "Add large files with Git LFS"
+git push origin main

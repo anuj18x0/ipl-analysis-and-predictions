@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: ipl-analysis-and-predictions
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python -c "print('Build complete - starting app')"
+    startCommand: streamlit run app.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true --server.enableCORS=false --server.enableXsrfProtection=false
+    plan: free
+    envVars:
+      - key: DELIVERIES_CSV_URL
+        value: https://drive.google.com/file/d/19SssaOPuPgTSD4sHpLPRip7QmFX8UDDz/view?usp=sharing
+      - key: WINNER_MODEL_URL
+        value: https://drive.google.com/file/d/1I8bziax2KrA8q43awZ4nJ_mkw-yIFc1P/view?usp=sharing
+      - key: PYTHONUNBUFFERED
+        value: 1
+      - key: STREAMLIT_SERVER_HEADLESS
+        value: true
+    healthCheckPath: /
+    disk:
+      name: ipl-data
+      mountPath: /opt/render/project/data
+      sizeGB: 3
