@@ -82,6 +82,12 @@ def check_and_download_files():
             
             progress_placeholder.success(" All files ready!")
             st.session_state.files_ready = True
+            st.session_state.files_checked = True
+            
+            # Add a small delay and then rerun to refresh the page
+            import time
+            time.sleep(1)
+            st.rerun()
             
         except Exception as e:
             progress_placeholder.error(f" Error during setup: {str(e)}")
