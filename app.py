@@ -35,7 +35,6 @@ if 'files_ready' not in st.session_state:
     st.session_state.files_ready = False
 
 def check_and_download_files():
-    \"\"\"Check and download files only when needed\"\"\"
     if st.session_state.files_checked:
         return st.session_state.files_ready
     
